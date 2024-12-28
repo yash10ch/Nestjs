@@ -8,7 +8,7 @@ export class PostsService {
         private readonly userService: UserService
     ) {}
 
-    public getPosts(userId:number) {
+    public getPosts(userId:string) {
     const user = this.userService.findOneById(userId);
 
        return [{
@@ -23,7 +23,7 @@ export class PostsService {
         userId: 2,
         id: 1,
         title: "Tarun chaudhary",
-        
+
        }]
     }
 }

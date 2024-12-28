@@ -12,15 +12,15 @@ export class UsersController {
         private readonly userService:UserService
  ){}
 
-//   @Get(':id?')
-//   public getUsers(@Param() getUsersDto:GetUserParamDto, @Query('limit', new DefaultValuePipe(10)) limit: number, @Query('page', new DefaultValuePipe(1), ParseIntPipe) page:number) {
-//     return this.userService.findAll(getUsersDto,limit,page);
-//   }
-
   @Get(':id?')
-  public getUsersById(@Param() getUsersDto:GetUserParamDto, @Query('limit', new DefaultValuePipe(10)) limit: number, @Query('page', new DefaultValuePipe(1)) page:number) {
-    console.log(typeof getUsersDto);
-    return this.userService.findOneById(getUsersDto.id);
+  public getUsers(@Param() getUsersDto:GetUserParamDto, @Query('limit', new DefaultValuePipe(10)) limit: number, @Query('page', new DefaultValuePipe(1), ParseIntPipe) page:number) {
+    return this.userService.findAll(getUsersDto,limit,page);
   }
+
+  // @Get(':id?')
+  // public getUsersById(@Param() getUsersDto:GetUserParamDto, @Query('limit', new DefaultValuePipe(10)) limit: number, @Query('page', new DefaultValuePipe(1)) page:number) {
+  //   console.log(typeof getUsersDto);
+  //   return this.userService.findOneById(getUsersDto.id);
+  // }
 
 }

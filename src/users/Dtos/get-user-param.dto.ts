@@ -4,6 +4,6 @@ import { Type }  from "class-transformer";
 export class GetUserParamDto {
     @IsOptional()
     @IsInt()
-    @Type(() => Number)
-    id?: number;
+    // @Type(() => Number)
+    id?: string;
 }
