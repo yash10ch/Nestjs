@@ -3,8 +3,10 @@ import { CreateUserDto } from './Dtos/create-users.dto';
 import { GetUserParamDto } from './Dtos/get-user-param.dto';
 import { PatchUserDto } from './Dtos/patch-user.dto';
 import { UserService } from './providers/users.service';
+import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @Controller('users')
+@ApiTags('Users') 
 export class UsersController {
 
  constructor(
@@ -13,6 +15,22 @@ export class UsersController {
  ){}
 
   @Get(':id?')
+  @ApiOperation({ summary: 'Get all users' }) 
+  @ApiResponse({ status: 200, description: 'Return all users' })
+  @ApiQuery({
+    name: 'limit',
+    required: false,
+    type: Number,
+    description: 'The number of items to return',
+    example: 10
+  })
+  @ApiQuery({
+    name: 'page',
+    required: false,
+    type: Number,
+    description: 'The number of items to return',
+    example: 1
+  })
   public getUsers(@Param() getUsersDto:GetUserParamDto, @Query('limit', new DefaultValuePipe(10)) limit: number, @Query('page', new DefaultValuePipe(1), ParseIntPipe) page:number) {
     return this.userService.findAll(getUsersDto,limit,page);
   }
