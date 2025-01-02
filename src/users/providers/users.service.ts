@@ -2,6 +2,10 @@ import { Injectable, forwardRef, Inject } from '@nestjs/common';
 import { GetUserParamDto } from '../Dtos/get-user-param.dto';
 import { AuthService } from 'src/auth/providers/auth.service';
 
+
+/**
+ * Class to connect to Users table and perform bussiness operations
+ */
 @Injectable()      //this decorator makes the class a provider
 export class UserService{
 
