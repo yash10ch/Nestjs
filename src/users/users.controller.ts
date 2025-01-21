@@ -41,4 +41,8 @@ export class UsersController {
   //   return this.userService.findOneById(getUsersDto.id);
   // }
 
+  @Post()
+  public creatUser(@Body() createUserDto:CreateUserDto){
+    return this.userService.createUser(createUserDto);
+  }
 }
